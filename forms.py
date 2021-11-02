@@ -10,6 +10,8 @@ class PatientForm(FlaskForm):
     numafil = IntegerField('Numero de Afiliado', validators=[DataRequired(), Length(max=15, min=1)])
     dni = IntegerField('DNI', validators=[DataRequired(), Length(max=9, min=9)])
     fecnac = DateField('Fecha de Nacimiento', format = "%d%m%y", validators=[DataRequired()])
+    obrasocial = SelectField('Obra Social', validators=[DataRequired()])
+    plan = SelectField('Plan', validators=[DataRequired()])
     genero = SelectField('Género', validators=[DataRequired()])
     domicilio = StringField('Domicilio', validators=[DataRequired(), Length(max=100)])
     telefono = IntegerField('Matricula del Profesional', validators=[DataRequired(), Length(max=10, min=8)])
@@ -24,6 +26,9 @@ class ProfesionalFomr(FlaskForm):
     dni = IntegerField('DNI', validators=[DataRequired(), Length(max=9, min=9)])
     direccion = StringField('Dirección', validators=[DataRequired(), Length(max=100)])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
+    condfisc = SelectField('Condicion Fiscal', validators=[DataRequired()])
+    localidad = SelectField('Localidad', validators=[DataRequired()])
+    password  = PasswordField('Contraseña', validators=[DataRequired()])
     submit = SubmitField('Guardar')
 
 class FileForm(FlaskForm):
