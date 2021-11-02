@@ -96,13 +96,17 @@ class Practica(db.Model, UserMixin):
 class Resumen(db.Model, UserMixin):
     __tablename__ = 'resumen'
     id = db.Column(db.Integer(11), primary_key=True)
-    id_obra_social_plan = db.Column(db.Integer(11), nullable=False)
-    id_practica = db.Column(db.Integer(11), nullable=False)
-
-class DetalleResumen(db.Model, UserMixin):
-    __tablename__ = 'detalle_resumen'
-    id = db.Column(db.Integer(11), primary_key=True)
     id_paciente = db.Column(db.Integer(11), nullable=False)
     id_profesional_obra_social = db.Column(db.Integer(11), nullable=False)
     importe_total = db.Column(db.Integer(9), nullable=False)
     fecha = db.Column(db.DateTime(), nullable=False)
+
+class DetalleResumen(db.Model, UserMixin):
+    __tablename__ = 'detalle_resumen'
+    id = db.Column(db.Integer(11), primary_key=True)
+    id_obra_social_practica = db.Column(db.Integer(11), nullable=False)
+    id_resumen = db.Column(db.Integer(11), nullable=False)
+    diente = db.Column(db.Integer(2), nullable=False)
+    cara = db.Column(db.String(5), nullable=False)
+    cantidad = db.Column(db.Integer(2), nullable=False)
+

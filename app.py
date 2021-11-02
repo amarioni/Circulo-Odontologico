@@ -10,7 +10,7 @@ login_manager = LoginManager()
 db = SQLAlchemy()
 
 from .forms import LoginForm
-from .models import user
+from .models import Profesional
 
 def create_app():
     app = Flask(__name__)
