@@ -6,11 +6,17 @@ from . import admin_bp
 
 @admin_bp.route('/manager')
 def manager():
-    return render_template('admin/manager.html')
+    user_name = request.args.get('user_name').title()
+    return render_template('admin/manager.html', user_name=user_name)
 
-@admin_bp.route('/professional/<user_name>')
-def professional(user_name):
-    return render_template('admin/professional.html', user_name=user_name.title())
+#@admin_bp.route('/professional/<user_name>')
+#def professional(user_name):
+#    return render_template('admin/professional.html', user_name=user_name.title())
+
+@admin_bp.route('/professional')
+def professional():
+    user_name = request.args.get('user_name').title()
+    return render_template('admin/professional.html', user_name=user_name)
 
 @admin_bp.route('/formprofesional')
 def formprofessional():

@@ -12,9 +12,9 @@ def login():
     # PRIMERO COMPROBAMOS SI EL USUARIO ESTÁ AUTENTICADO
     if current_user.is_authenticated:
         if current_user.is_admin():
-            return redirect(url_for('admin.manager'))
+            return redirect(url_for('admin.manager', user_name=current_user.name))
         else:
-            return redirect(url_for('admin.professional',  user_name=current_user.name))
+            return redirect(url_for('admin.professional', user_name=current_user.name))
     form = LoginForm()
 
     if form.validate_on_submit():
@@ -29,19 +29,16 @@ def login():
             # SI NO SE RECIBE EL NEXT, REDIRIGIMOS EL USUARIO A LA PAGINA DE INICIO
             if not next_page or url_parse(next_page).netloc != '':
                 if current_user.is_admin():
-                    next_page = url_for('admin.manager')
+                    next_page = url_for('admin.manager',user_name=user.name)
                 else:
                     next_page = url_for('admin.professional', user_name=user.name)     
             return redirect(next_page)
     return render_template('auth/index.html', form=form)
 
-
-
 @auth_bp.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('auth.login'))
-
 
 @login_manager.user_loader
 def load_user(user_id):
