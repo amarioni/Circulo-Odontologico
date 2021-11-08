@@ -9,9 +9,6 @@ login_manager = LoginManager()
 # CREAMOS EL OBJETO SQLALCHEMY
 db = SQLAlchemy()
 
-from .forms import LoginForm
-from .models import Profesional
-
 def create_app():
     app = Flask(__name__)
 
@@ -25,7 +22,15 @@ def create_app():
     
     db.init_app(app)
 
-    with app.app_context():
-        db.create_all()
+    # Registro de los Blueprints
+    from .auth import auth_bp
+    app.register_blueprint(auth_bp)
+
+    from .admin import admin_bp
+    app.register_blueprint(admin_bp)
+
+    from .public import public_bp
+    app.register_blueprint(public_bp)
+
 
     return app

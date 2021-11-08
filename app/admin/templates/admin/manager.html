@@ -1,0 +1,64 @@
+{% extends "base_template.html" %}
+    {% block contenido %}
+    </header>
+        <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
+            <div class="container">
+                <a class="navbar-brand" href='{{ url_for("auth.login") }}' style="text-transform: uppercase;"> <img class="img-fluid d-none d-md-block" height="350" width="350" src="/static/images/logoblue.jpg" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>   
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href='{{ url_for("auth.login") }}'>Manager<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href='{{ url_for("auth.logout") }}'>Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <div class="container-md d-md-flex">
+        <div class="container-md col-sm-3 containericons text-center">
+            <br>
+            <div>
+                <img class="img-fluid" src="/static/images/iconmed.png" alt="">
+            </div>
+            <br>
+            <div>
+                <a href='{{ url_for("admin.formprofessional") }}'><button type="button" class="btn btnlogin btn-light">Ingreso de Profesional</button></a>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div class="container-md col-sm-3 containericons text-center">
+            <br>
+            <div>
+                <img class="img-fluid" src="/static/images/iconregister.png" alt="">
+            </div>
+            <br>
+            <div>
+                <button type="button" class="btn btnlogin btn-light">Consulta de Registros</button>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div class="container-md col-sm-3 containericons text-center">
+            <br>
+            <div>
+                <img class="img-fluid" src="/static/images/iconhealth.png" alt="">
+            </div>
+            <br>
+            <div>
+                <button type="button" class="btn btnlogin btn-light">Agregar Obra Social</button>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+    {% endblock %}

@@ -33,9 +33,3 @@ class ProfesionalFomr(FlaskForm):
 
 class FileForm(FlaskForm):
     title = StringField('Título', validators=[DataRequired(), Length(max=128)])
-
-class LoginForm(FlaskForm):
-    email = StringField('E-mail', validators=[DataRequired(), Email()])
-    clave = PasswordField('Contraseña', validators=[DataRequired()])
-    recuerdame = BooleanField('Recuérdar mi Cuenta')
-    submit = SubmitField('Ingresar')
