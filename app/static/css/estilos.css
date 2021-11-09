@@ -76,6 +76,7 @@ body {
 
 .nav-link{
   font-size: 18px;
+  white-space: nowrap;
 }
 
 .formpatient{
