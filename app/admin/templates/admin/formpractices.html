@@ -1,0 +1,127 @@
+{% extends "base_template.html" %}
+{% block contenido %}
+<nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear mt-0">
+    <div class="container">
+        <a class="navbar-brand" href='{{ url_for("auth.login") }}' style="text-transform: uppercase;"> <img class="img-fluid d-none d-md-block" height="350" width="350" src="/static/images/logoblue.jpg" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>   
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active nav-link text-left">
+                {{ user_name }}
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href='{{ url_for("auth.logout") }}'>Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-md w-80 mt-3 containericons text-center">
+    <table class="table table-bordered table-responsive mt-3">
+                <thead class="thead-light">
+                    <tr>
+                    <th scope="col-md-1">Código</th>
+                    <th class=" col-md-4 text-rigt">Práctica</th>
+                    <th scope="col-md-2">Diente</th>
+                    <th scope="col-md-2">Cara</th>
+                    <th scope="col-md-2">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-light">
+                    <tr>
+                    <td class="col-2"><div>
+                        <label class="mr-sm-3 sr-only" for="inlineFormCustomSelect">Preference</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected>Cod</option>
+                        <option value="1">0202</option>
+                        <option value="2">090101</option>
+                        <option value="3">0302</option>
+                        </select>
+                    </div></td>
+                    <td>
+                        <div class="col-md-4"></div></td>
+                    <td>
+                        <input class="col-md-4" type="text" >
+                    </td>
+                    <td>
+                        <input class="col-md-4" type="text" >
+                    </td>
+                    <td> 
+                        <input class="col-md-4" type="text" >
+                    </td>
+                    </tr>
+                    <tr>
+                    <td class="col-2"><div>
+                        <label class="mr-sm-3 sr-only" for="inlineFormCustomSelect">Preference</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected>Cod</option>
+                        <option value="1">0202</option>
+                        <option value="2">090101</option>
+                        <option value="3">0302</option>
+                        </select>
+                    </div></td>
+                    <td>
+                        <div class="col-md-4"></div></td>
+                    <td>
+                        <input class="col-md-4" type="text" >
+                    </td>
+                    <td>
+                        <input class="col-md-4" type="text" >
+                    </td>
+                    <td> 
+                        <input class="col-md-4" type="text" >
+                    </td>
+                    </tr>
+                    <tr>
+                        <td class="col-2"><div>
+                            <label class="mr-sm-3 sr-only" for="inlineFormCustomSelect">Preference</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected>Cod</option>
+                            <option value="1">0202</option>
+                            <option value="2">090101</option>
+                            <option value="3">0302</option>
+                            </select>
+                        </div></td>
+                        <td>
+                            <div class="col-md-4"></div></td>
+                        <td>
+                            <input class="col-md-4" type="text" >
+                        </td>
+                        <td>
+                            <input class="col-md-4" type="text" >
+                        </td>
+                        <td> 
+                            <input class="col-md-4" type="text" >
+                        </td>
+                        </tr>
+                        <tr>
+                            <td class="col-2"><div>
+                                <label class="mr-sm-3 sr-only" for="inlineFormCustomSelect">Preference</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <option selected>Cod</option>
+                                <option value="1">0202</option>
+                                <option value="2">090101</option>
+                                <option value="3">0302</option>
+                                </select>
+                            </div></td>
+                            <td>
+                                <div class="col-md-4"></div></td>
+                            <td>
+                                <input class="col-md-4" type="text" >
+                            </td>
+                            <td>
+                                <input class="col-md-4" type="text" >
+                            </td>
+                            <td> 
+                                <input class="col-md-4" type="text" >
+                            </td>
+                            </tr>
+                </tbody>
+                </table>
+                <div class="text-center mb-2">
+                    <button  type="button" class="btn btnlogin btn-light ">Guardar</button>
+            </div>
+        </div>
+{% endblock %}

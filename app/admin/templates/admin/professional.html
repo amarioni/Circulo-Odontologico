@@ -1,7 +1,6 @@
 {% extends "base_template.html" %}
     {% block contenido %}
-    </header>
-        <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
+        <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear mt-0">
             <div class="container">
                 <a class="navbar-brand" href='{{ url_for("auth.login") }}' style="text-transform: uppercase;"> <img class="img-fluid d-none d-md-block" height="350" width="350" src="/static/images/logoblue.jpg" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +18,6 @@
                 </ul>
             </div>
         </nav>
-    </header>
     <br>
     <br>
     <br>
@@ -43,7 +41,7 @@
             </div>
             <br>
             <div>
-                <button type="button" class="btn btnlogin btn-light">Carga de Nueva Ficha</button>
+                <a href='{{ url_for("admin.formfile") }}'><button type="button" class="btn btnlogin btn-light">Carga de Nueva Ficha</button></a>
             </div>
             <br>
             <br>

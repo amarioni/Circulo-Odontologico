@@ -25,3 +25,11 @@ def formprofessional():
 @admin_bp.route('/formpatient')
 def formpatient():
     return render_template('admin/formpatient.html')
+
+@admin_bp.route('/formfile')
+def formfile():
+    return render_template('admin/formfile.html')
+
+@admin_bp.route('/formpractices')
+def formpractices():
+    return render_template('admin/formpractices.html')
