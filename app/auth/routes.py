@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 from app import login_manager
 from . import auth_bp
 from .forms import LoginForm
-from .models import Usuario, Persona
+from .models import Usuario
 
 @auth_bp.route('/', methods=['GET', 'POST'])
 def login():
@@ -15,8 +15,8 @@ def login():
             return redirect(url_for('admin.manager', user_name=current_user.name))
         else:
             return redirect(url_for('admin.professional', user_name=current_user.name))
+    
     form = LoginForm()
-
     if form.validate_on_submit():
         user = Usuario.get_by_email(form.email.data.upper())
         # SI EXISTE UN USUARIO CON ESE EMAIL Y LA CLAVE ES CORRECTA, 

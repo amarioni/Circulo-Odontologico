@@ -7,7 +7,7 @@ from pymysql import *
 
 login_manager = LoginManager()
 # CREAMOS EL OBJETO SQLALCHEMY
-db = SQLAlchemy()
+db = SQLAlchemy(session_options={"autoflush": False})
 
 def create_app():
     app = Flask(__name__)
