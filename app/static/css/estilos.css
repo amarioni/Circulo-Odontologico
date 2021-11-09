@@ -83,3 +83,8 @@ body {
   font-family: "Secular One";
   border-style: groove;
 }
+.error-text{
+  font-family: 'Times New Roman', Times, serif;
+  color: red;
+  text-shadow: none;
+}

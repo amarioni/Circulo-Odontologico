@@ -59,29 +59,29 @@
 
     </div>
 
-    <div class="container-md containerlogin col-sm-4 bg-circulo-transp p-4 ml-5">
+    <div class="container-md containerlogin col-sm-4 bg-circulo-transp p-4 ml-5 ">
         <h3 class="textlogin ml-1">Acceso de usuarios</h3>
         <br>
         <div>
-            <form action="" method="post" novalidate>
+            <form class="textlogin"  action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
                 <div>
                     {{ form.email.label }}
-                    {{ form.email }}<br>
+                    {{ form.email(class="form-control") }}<br>
                     {% for error in form.email.errors %}
-                    <span style="color: red;">{{ error }}</span>
+                    {{ error()}}
                     {% endfor %}
                 </div>
                 <div>
                     {{ form.password.label }}
-                    {{ form.password }}<br>
+                    {{ form.password(class="form-control") }}
                     {% for error in form.password.errors %}
-                    <span style="color: red;">{{ error }}</span>
+                    {{ error()}}
                     {% endfor %}
                 </div>
-                <div>{{ form.remember_me() }} {{ form.remember_me.label }}</div>
+                <div class="p-1">{{ form.remember_me() }} {{ form.remember_me.label }}</div>
                 <div>
-                    {{ form.submit() }}
+                    {{ form.submit(class="btn btnlogin") }}
                 </div>
             </form>
         </div>
