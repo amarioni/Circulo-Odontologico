@@ -73,7 +73,9 @@ body {
   font-family: 'Secular One';
   background-color: var(--circulogrey) !important;
 }
-
+.btn-form-file {
+  margin-top: 3.3%;
+}
 .nav-link{
   font-size: 18px;
   white-space: nowrap;

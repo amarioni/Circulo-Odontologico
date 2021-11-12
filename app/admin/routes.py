@@ -1,5 +1,5 @@
 
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, abort
 from werkzeug.urls import url_parse
 
 from . import admin_bp
@@ -32,4 +32,20 @@ def formfile():
 
 @admin_bp.route('/formpractices')
 def formpractices():
+    """
+    if s None:
+        abort(404)
     return render_template('admin/formpractices.html')
+"""
+"""
+def register_error_handlers(app):
+
+    @admin_bp.errorhandler(500)
+    def base_error_handler(e):
+        return render_template('admin/500.html'), 500
+
+    @admin_bp.errorhandler(404)
+    def error_404_handler(e):
+        return render_template('admin/404.html'), 404
+
+"""
