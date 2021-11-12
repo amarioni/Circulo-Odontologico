@@ -60,13 +60,28 @@ class Profesional(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_condicion_fiscal = db.Column(db.Integer, nullable=False)
     id_localidad = db.Column(db.Integer, nullable=False)
-    id_persona = db.Column(db.Integer, nullable=False)
+    id_persona = db.Column(db.Integer, ForeignKey('persona.id'), nullable=False)
     matricula = db.Column(db.String(11), nullable=False)
     fec_nac = db.Column(db.Date, nullable=False)
     direccion = db.Column(db.String(50), nullable=False)
     dni = db.Column(db.String(8), nullable=False)
     telefono = db.Column(db.String(14), nullable=False)
     condicion = db.Column(db.Boolean, nullable=False)   
+
+    
+
+
+class Plan(db.Model):
+    __tablename__ = 'plan'
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(50), nullable=False)
+    cobertura = db.Column(db.Integer(3), nullable=False)
+
+class ObraSocPlan(db.Model):
+    __tablename__ = 'obra_social_plan'
+    id = db.Column(db.Integer, primary_key=True)
+    id_obra_social = db.Column(db.Integer, nullable=False)
+    id_plan = db.Column(db.Integer, nullable=False)
 
 class ObraSoc(db.Model):
     __tablename__ = 'obra_social'
@@ -78,11 +93,9 @@ class ObraSoc(db.Model):
     telefono = db.Column(db.String(14), nullable=False)
     condicion = db.Column(db.Boolean, nullable=False)
 
-class ObraSocPlan(db.Model):
-    __tablename__ = 'obra_social_plan'
-    id = db.Column(db.Integer, primary_key=True)
-    id_obra_social = db.Column(db.Integer, nullable=False)
-    id_plan = db.Column(db.Integer, nullable=False)
+
+
+
 
 class ObraSocPractica(db.Model):
     __tablename__ = 'obra_social_practica'
@@ -91,7 +104,7 @@ class ObraSocPractica(db.Model):
     id_practica = db.Column(db.Integer, nullable=False)
 
 class Practica(db.Model):
-    __tablename__ = 'obra_social_practica'
+    __tablename__ = ''
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), nullable=False)
     codigo = db.Column(db.String(6), nullable=False)

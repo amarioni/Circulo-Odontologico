@@ -42,7 +42,7 @@
                 </li>
                 {% else %}
                 <li class="nav-item active nav-link text-left">
-                    {{ user_name }}
+                    {{ current_user.name.title() }}
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href='{{ url_for("auth.logout") }}'>Log Out</a>

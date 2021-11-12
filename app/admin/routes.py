@@ -1,22 +1,19 @@
 
 from flask import render_template, redirect, url_for, request, abort
 from werkzeug.urls import url_parse
+from flask_login import current_user
+from app.auth import routes
 
 from . import admin_bp
 
 @admin_bp.route('/manager')
 def manager():
-    user_name = request.args.get('user_name').title()
-    return render_template('admin/manager.html', user_name=user_name)
-
-#@admin_bp.route('/professional/<user_name>')
-#def professional(user_name):
-#    return render_template('admin/professional.html', user_name=user_name.title())
+    
+    return render_template('admin/manager.html')
 
 @admin_bp.route('/professional')
 def professional():
-    user_name = request.args.get('user_name').title()
-    return render_template('admin/professional.html', user_name=user_name)
+    return render_template('admin/professional.html')
 
 @admin_bp.route('/formprofesional')
 def formprofessional():

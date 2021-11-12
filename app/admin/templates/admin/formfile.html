@@ -5,15 +5,15 @@
         <form class="containericons p-5 m-4 needs-validation formpatient" novalidate>
             <div class="form-row">
               <div class="col-md-3 mb-3">
-                <label class="textlogin" for="validationTooltip01">Matrícula</label>
-                <input class="form-control" type="text" value="Disabled readonly input" aria-label="Nombre- profesional" disabled readonly>
+                <label class="textlogin" for="validationTooltip01">Matricula</label>
+                <input class="form-control" type="text" value="{{ current_user.matricula }}" aria-label="Nombre- profesional" disabled readonly>
                 <div class="valid-tooltip">
                   Correcto!
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label class="textlogin" for="validationTooltip01">Profesional</label>
-                <input class="form-control" type="text" value="Disabled readonly input" aria-label="Nombre- profesional" disabled readonly>
+                <input class="form-control" type="text" value="{{ current_user.name.title() }}" aria-label="Nombre- profesional" disabled readonly>
                 <div class="valid-tooltip">
                   Correcto!
                 </div>
