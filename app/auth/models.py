@@ -5,6 +5,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import backref, relationship
 
 from app import db
+from app.admin.models import ProfObra
 
 
 class Profesional(db.Model):
@@ -20,6 +21,9 @@ class Profesional(db.Model):
     telefono = db.Column(db.String(14), nullable=False)
     condicion = db.Column(db.Boolean, nullable=False)   
     persona = relationship("Persona", back_populates="profesional")
+
+    def get_id(matricula):
+        return Profesional.query.get(Profesional.id).filter_bi(matricula=matricula)
 
 class Persona(db.Model):
     __tablename__ = 'persona'

@@ -1,10 +1,11 @@
 
 from flask import render_template, redirect, url_for, request, abort
 from werkzeug.urls import url_parse
-from flask_login import current_user
-from app.auth import routes
 
+from datetime import date
 from . import admin_bp
+from .models import *
+from .forms import *
 
 @admin_bp.route('/manager')
 def manager():
@@ -23,12 +24,26 @@ def formprofessional():
 def formpatient():
     return render_template('admin/formpatient.html')
 
-@admin_bp.route('/formfile')
+@admin_bp.route('/formfile', methods = ['GET','POST'])
 def formfile():
-    return render_template('admin/formfile.html')
+    form = FileForm()
+    if form.validate_on_submit:
+        obrasocial = form.obrasocial.data
+        plan = form.plan.data
+        numafil = form.numafil.data
+
+        paciente_id = Paciente.get_id(numafil)
+        obrasoc_id = ObraSoc.get_id(obrasocial)
+        prof_obra_soc_id = ProfObra.get_id(obrasoc_id)
+
+        newfile = Resumen(id_paciente=paciente_id, id_profecional_obras_social=prof_obra_soc_id, importe_total=0, fecha=date.today())
+        newfile.save()
+        return render_template("admin/formfile.html", form=form)
+    return render_template('admin/formfile.html', form=form)
 
 @admin_bp.route('/formpractices')
 def formpractices():
+    render_template('admin/formpractices.html')
     """
     if s None:
         abort(404)

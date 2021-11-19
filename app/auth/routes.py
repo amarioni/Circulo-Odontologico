@@ -10,7 +10,6 @@ from .models import Usuario
 
 @auth_bp.route('/', methods=['GET', 'POST'])
 def login():
-    # PRIMERO COMPROBAMOS SI EL USUARIO ESTÁ AUTENTICADO
     if current_user.is_authenticated:
         if current_user.is_admin():
             return redirect(url_for('admin.manager'))
@@ -20,14 +19,9 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = Usuario.get_by_email(form.email.data.upper())
-        # SI EXISTE UN USUARIO CON ESE EMAIL Y LA CLAVE ES CORRECTA, 
-        # AUTENTICAMOS EL USUARIO USANDO EL METODO login_user
         if user is not None and user.check_password(form.password.data.upper()):
             login_user(user, remember=form.remember_me.data)
             next_page = request.args.get('next')
-            # COMPROBAMOS SI RECIBIMOS EL PARAMETRO NEXT. 
-            # ESTO PASA CUANDO SE INTENTA INGRESAR A UNA PAGINA PROTEGIDA SIN ESTAR AUTENTICADO.
-            # SI NO SE RECIBE EL NEXT, REDIRIGIMOS EL USUARIO A LA PAGINA DE INICIO
             if not next_page or url_parse(next_page).netloc != '':
                 if current_user.is_admin():
                     next_page = url_for('admin.manager')
