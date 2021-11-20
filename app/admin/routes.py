@@ -4,8 +4,12 @@ from werkzeug.urls import url_parse
 
 from datetime import date
 from . import admin_bp
+<<<<<<< Updated upstream
 from .models import *
 from .forms import *
+=======
+from app import admin
+>>>>>>> Stashed changes
 
 @admin_bp.route('/manager')
 def manager():
@@ -42,21 +46,16 @@ def formfile():
 
 @admin_bp.route('/formpractices')
 def formpractices():
+<<<<<<< Updated upstream
     render_template('admin/formpractices.html')
     """
     if s None:
         abort(404)
+=======
+>>>>>>> Stashed changes
     return render_template('admin/formpractices.html')
-"""
-"""
-def register_error_handlers(app):
 
-    @admin_bp.errorhandler(500)
-    def base_error_handler(e):
-        return render_template('admin/500.html'), 500
 
-    @admin_bp.errorhandler(404)
-    def error_404_handler(e):
-        return render_template('admin/404.html'), 404
 
-"""
+
+

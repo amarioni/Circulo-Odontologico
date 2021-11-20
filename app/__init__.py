@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask ,render_template, redirect, url_for, request, abort
 from flask_login import LoginManager
 # IMPORTAMOS SQLALCHEMY 
 from flask_sqlalchemy import SQLAlchemy
@@ -31,6 +31,19 @@ def create_app():
 
     from .public import public_bp
     app.register_blueprint(public_bp)
-    
+
+    register_error_handlers(app)
     return app
+
+
+def register_error_handlers(app):
+
+    @app.errorhandler(500)
+    def base_error_handler(e):
+        return render_template('500.html'), 500
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html'), 400
+
 
