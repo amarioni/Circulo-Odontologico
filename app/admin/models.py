@@ -40,8 +40,6 @@ class Paciente(db.Model):
     fec_nac = db.Column(db.Date, nullable=False)
     n_afiliado = db.Column(db.String(20), nullable=False)
     genero = db.Column(db.Boolean, nullable=False)
-    domicilio = db.Column(db.String(50), nullable=False)
-    telefono = db.Column(db.String(14), nullable=False)
 
     #def get_id(n_afiliado):
     #    return session.query(Paciente.id).filter(Paciente.n_afiliado == n_afiliado)

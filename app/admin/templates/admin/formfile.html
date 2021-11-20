@@ -44,7 +44,9 @@
             <span style="color: red;">{{ error }}</span>
             {% endfor %}
         </div>
-        <div>{{ form.submit(class="btn btnlogin") }}</div>
+        <div>
+          <input type="submit">
+        </div>
       </form>
     </div>     
 
@@ -52,3 +54,6 @@
         <br>
         <br>
     {% endblock %}
+
+
+  <!--{{ form.submit(class="btn btnlogin") }}

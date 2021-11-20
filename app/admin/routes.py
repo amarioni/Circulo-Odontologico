@@ -9,7 +9,6 @@ from .forms import *
 
 @admin_bp.route('/manager')
 def manager():
-    
     return render_template('admin/manager.html')
 
 @admin_bp.route('/professional')
@@ -27,7 +26,7 @@ def formpatient():
 @admin_bp.route('/formfile', methods = ['GET','POST'])
 def formfile():
     form = FileForm()
-    if form.validate_on_submit:
+    if form.validate_on_submit():
         obrasocial = form.obrasocial.data
         plan = form.plan.data
         numafil = form.numafil.data
@@ -36,7 +35,7 @@ def formfile():
         obrasoc_id = ObraSoc.get_id(obrasocial)
         prof_obra_soc_id = ProfObra.get_id(obrasoc_id)
 
-        newfile = Resumen(id_paciente=paciente_id, id_profecional_obras_social=prof_obra_soc_id, importe_total=0, fecha=date.today())
+        newfile = Resumen(id_paciente=paciente_id, id_profesional_obra_social=prof_obra_soc_id, importe_total=0, fecha=date.today())
         newfile.save()
         return render_template("admin/formfile.html", form=form)
     return render_template('admin/formfile.html', form=form)
