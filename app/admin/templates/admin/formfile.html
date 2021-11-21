@@ -3,9 +3,14 @@
     <br>
     <br>
     
+<<<<<<< Updated upstream
     <div class="container">
       <form action ="/formfile" method="POST">
         {{ form.hidden_tag() }}
+=======
+    <div class="container textlogin">
+      <form class="containericons p-5 m-4 needs-validation formpatient textlogin" action ="/formfile"  method="POST">
+>>>>>>> Stashed changes
         <div class="col-md-3 mb-3">
           <label class="textlogin" for="validationTooltip01">Matricula</label>
           <input class="form-control" type="text" value="{{ current_user.matricula }}" aria-label="Nombre- profesional" disabled readonly>
@@ -22,26 +27,28 @@
         </div>
         <div>
             {{ form.obrasocial.label }}
-            {{ form.obrasocial(size=32) }}<br>
+            {{ form.obrasocial }}<br>
             <!-- LE MOSTRAMOS AL USUARIO EL ERROR DE VALIDACIÓN -->
             {% for error in form.obrasocial.errors %}
-            <span style="color: red;">{{ error }}</span>
+            <div class="error-text">{{ error }}</div>
             {% endfor %}
         </div>
         <div>
             {{ form.plan.label }}
-            {{ form.plan(size=32) }}<br>
+            {{ form.csrf_token }}
+            {{ form.plan }}<br>
             <!-- LE MOSTRAMOS AL USUARIO EL ERROR DE VALIDACIÓN -->
             {% for error in form.plan.errors %}
-            <span style="color: red;">{{ error }}</span>
+            <div class="error-text">{{ error }}</div>            
             {% endfor %}
         </div>
         <div>
             {{ form.numafil.label }}
-            {{ form.numafil(size=20) }}<br>
+            {{ form.csrf_token }}
+            {{ form.numafil }}<br>
             <!-- LE MOSTRAMOS AL USUARIO EL ERROR DE VALIDACIÓN -->
             {% for error in form.numafil.errors %}
-            <span style="color: red;">{{ error }}</span>
+            <div class="error-text">{{ error }}</div>
             {% endfor %}
         </div>
         <div>
@@ -53,7 +60,7 @@
         <br>
         <br>
         <br>
-    {% endblock %}
+  {% endblock %}
 
 
   <!--{{ form.submit(class="btn btnlogin") }}
