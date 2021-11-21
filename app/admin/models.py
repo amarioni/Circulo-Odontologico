@@ -41,11 +41,15 @@ class Paciente(db.Model):
     n_afiliado = db.Column(db.String(20), nullable=False)
     genero = db.Column(db.Boolean, nullable=False)
 
-    #def get_id(n_afiliado):
-    #    return session.query(Paciente.id).filter(Paciente.n_afiliado == n_afiliado)
-
     def get_id(n_afiliado):
-        return Paciente.query.filter_by(n_afiliado=n_afiliado).first()
+        return session.query(Paciente.id).filter(Paciente.n_afiliado == n_afiliado)
+    
+    def get_name(id):
+        return session.query(Paciente.nombre).filter(Paciente.id == id)
+
+    #def get_id(n_afiliado):
+    #    return Paciente.query.filter_by(n_afiliado=n_afiliado).first()
+
 
     def paciente_query():
         return Paciente.query
@@ -77,11 +81,11 @@ class ProfObra(db.Model):
     def profobra_query():
         return ProfObra.query
 
-    #def get_id(id_obra_social):
-    #    return session.query(ProfObra.id).filter(ProfObra.id_obra_social == id_obra_social)
-
     def get_id(id_obra_social):
-        return ProfObra.query.filter_by(id_obra_social=id_obra_social).first()
+        return session.query(ProfObra.id).filter(ProfObra.id_obra_social == id_obra_social)
+
+    #def get_id(id_obra_social):
+    #    return ProfObra.query.filter_by(id_obra_social=id_obra_social).first()
 
 class Plan(db.Model):
     __tablename__ = 'plan'
@@ -114,11 +118,11 @@ class ObraSoc(db.Model):
     def obrasoc_query(): #new
         return ObraSoc.query
 
-    #def get_id(nombre):
-    #    return session.query(ObraSoc.id).filter(ObraSoc.nombre == nombre)
-
     def get_id(nombre):
-        return ObraSoc.query.filter_by(nombre=nombre).first()
+        return session.query(ObraSoc.id).filter(ObraSoc.nombre == nombre)
+
+    #def get_id(nombre):
+    #    return ObraSoc.query.filter_by(nombre=nombre).first()
 
 class ObraSocPractica(db.Model):
     __tablename__ = 'obra_social_practica'

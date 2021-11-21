@@ -4,12 +4,9 @@ from werkzeug.urls import url_parse
 
 from datetime import date
 from . import admin_bp
-<<<<<<< Updated upstream
 from .models import *
 from .forms import *
-=======
 from app import admin
->>>>>>> Stashed changes
 
 @admin_bp.route('/manager')
 def manager():
@@ -30,6 +27,7 @@ def formpatient():
 @admin_bp.route('/formfile', methods = ['GET','POST'])
 def formfile():
     form = FileForm()
+    formname = PatientName()
     if form.validate_on_submit():
         obrasocial = form.obrasocial.data
         plan = form.plan.data
@@ -46,16 +44,4 @@ def formfile():
 
 @admin_bp.route('/formpractices')
 def formpractices():
-<<<<<<< Updated upstream
     render_template('admin/formpractices.html')
-    """
-    if s None:
-        abort(404)
-=======
->>>>>>> Stashed changes
-    return render_template('admin/formpractices.html')
-
-
-
-
-

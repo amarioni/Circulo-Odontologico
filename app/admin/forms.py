@@ -19,3 +19,7 @@ class DetailFomr(FlaskForm):
     cara = StringField('Nombre del Profesional', validators=[DataRequired(), Length(max=5, min=1)])
     cantidad = IntegerField('Diente', validators=[DataRequired(), Length(max=1, min=1)])
     submit = SubmitField('Guardar')
+
+class PatientName(object):
+    nombre = StringField('Nombre del Paciente', validators=[DataRequired(), Length(50)])
+    submit = SubmitField()
