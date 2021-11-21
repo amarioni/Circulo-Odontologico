@@ -13,7 +13,6 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'c74d9b911e14474f9beb8d15f0765410'
-    # LE DECIMOS A LA APP DONDE SE ENCUENTRA LA BASE DE DATOS
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://BD2021:BD2021itec@143.198.156.171:3306/sql_efi_lopezmedina_marioni'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -37,15 +36,7 @@ def create_app():
 
 
 def register_error_handlers(app):
-<<<<<<< Updated upstream
-    @app.errorhandler(404)
-    def page_not_found(e):
-        return render_template('404.html'), 400
-=======
 
     @app.errorhandler(404)
     def page_not_found(e):
         return render_template('404.html'), 404
-
-
->>>>>>> Stashed changes
