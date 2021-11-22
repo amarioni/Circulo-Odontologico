@@ -49,8 +49,7 @@ class Paciente(db.Model):
 
     def get_id(n_afiliado):
         return Paciente.query.filter_by(n_afiliado=n_afiliado).first()
-
-
+    
     def paciente_query():
         return Paciente.query
 
@@ -123,6 +122,7 @@ class ObraSoc(db.Model):
 
     def get_id(nombre):
         return ObraSoc.query.filter_by(nombre=nombre).first()
+    
 
 class ObraSocPractica(db.Model):
     __tablename__ = 'obra_social_practica'

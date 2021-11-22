@@ -34,13 +34,13 @@ def formfile():
         numafil = form.numafil.data
 
         paciente_id = Paciente.get_id(numafil)
-        obrasoc_id = ObraSoc.get_id(obrasocial)
+        obrasoc_id = obrasocial.id
         prof_obra_soc_id = ProfObra.get_id(obrasoc_id)
 
-        newfile = Resumen(id_paciente=paciente_id, id_profesional_obra_social=prof_obra_soc_id, importe_total=0, fecha=date.today())
+        newfile = Resumen(id_paciente=paciente_id.id, id_profesional_obra_social=prof_obra_soc_id.id, importe_total=0, fecha=date.today())
         newfile.save()
         return render_template("admin/formfile.html", form=form)
-    return render_template('admin/formfile.html', form=form)
+    return render_template('admin/formpractices.html', form=form)
 
 @admin_bp.route('/formpractices')
 def formpractices():
