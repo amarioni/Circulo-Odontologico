@@ -13,13 +13,9 @@ class FileForm(FlaskForm):
     numafil = StringField('Numero de Afiliado', validators=[DataRequired(), Length(max=15, min=1)])
     submit = SubmitField('Seleccionar Prácticas')
 
-class DetailFomr(FlaskForm):
-    codigo = QuerySelectField('Codigo', validators=[DataRequired()])
+class DetailForm(FlaskForm):
+    codigo = QuerySelectField(query_factory=Practica.practica_query, allow_blank=True, get_label='codigo')
     diente = IntegerField('Diente', validators=[DataRequired(), Length(max=2, min=2)])
     cara = StringField('Nombre del Profesional', validators=[DataRequired(), Length(max=5, min=1)])
     cantidad = IntegerField('Diente', validators=[DataRequired(), Length(max=1, min=1)])
     submit = SubmitField('Guardar')
-
-class PatientName(object):
-    nombre = StringField('Nombre del Paciente', validators=[DataRequired(), Length(50)])
-    submit = SubmitField()

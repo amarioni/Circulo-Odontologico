@@ -1,5 +1,6 @@
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import backref, relationship, session
+from sqlalchemy.sql.expression import func
 
 from app import db
 
@@ -11,12 +12,19 @@ class Resumen(db.Model):
     importe_total = db.Column(db.Integer, nullable=False)
     fecha = db.Column(db.DateTime, nullable=False)
 
+    def get_max_id():
+        return session.query(func.max(Resumen.id))
+
+    def get_total(id):
+        return Resumen.query.filter_by(id=id).first()
+
     def resumen_query():
         return Resumen.query
 
-    def save(self): #este sirve para grabar en la base de datos un nuevo resumen
+    def save(self):
         db.session.add(self)
         db.session.commit()
+
 
 class DetalleRes(db.Model):
     __tablename__ = 'detalle_resumen'
@@ -30,6 +38,10 @@ class DetalleRes(db.Model):
 
     def detalleres_query():
         return DetalleRes.query
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
 
 class Paciente(db.Model):
     __tablename__ = 'paciente'
@@ -139,6 +151,9 @@ class Practica(db.Model):
     nombre = db.Column(db.String(50), nullable=False)
     codigo = db.Column(db.String(6), nullable=False)
     importe = db.Column(db.Integer, nullable=False)
+
+    def get_id_importe(codigo):
+        return Practica.query.filter_by(codigo=codigo).first()
 
     def practica_query():
         return Practica.query
