@@ -90,3 +90,7 @@ body {
   color: red;
   text-shadow: white;
 }
+
+.errorbg{
+  background-color: white !important;
+}

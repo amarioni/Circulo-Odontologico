@@ -11,7 +11,7 @@ class FileForm(FlaskForm):
     obrasocial = QuerySelectField(query_factory=ObraSoc.obrasoc_query, allow_blank=True, get_label='nombre')
     plan = QuerySelectField(query_factory=Plan.plan_query, allow_blank=True, get_label='nombre')
     numafil = StringField('Numero de Afiliado', validators=[DataRequired(), Length(max=15, min=1)])
-    submit = SubmitField('Siguiente')
+    submit = SubmitField('Seleccionar Prácticas')
 
 class DetailFomr(FlaskForm):
     codigo = QuerySelectField('Codigo', validators=[DataRequired()])

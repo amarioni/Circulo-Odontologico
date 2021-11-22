@@ -44,4 +44,13 @@ def formfile():
 
 @admin_bp.route('/formpractices')
 def formpractices():
+<<<<<<< Updated upstream
     render_template('admin/formpractices.html')
+=======
+    return render_template('admin/formpractices.html')
+
+
+
+
+
+>>>>>>> Stashed changes

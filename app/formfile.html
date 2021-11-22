@@ -28,7 +28,7 @@
                       <form action ="/formfile" method="POST">
                         <div>
                             {{ form.obrasocial.label }}
-                            {{ form.obrasicial(size=32) }}<br>
+                            {{ form.obrasicial() }}<br>
                             <!-- LE MOSTRAMOS AL USUARIO EL ERROR DE VALIDACIÓN -->
                             {% for error in form.apellido.errors %}
                             <span style="color: red;">{{ error }}</span>
