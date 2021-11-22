@@ -1,7 +1,7 @@
 
 from operator import delitem
 from warnings import catch_warnings
-from flask import render_template
+from flask import render_template, redirect
 
 from datetime import date
 
@@ -40,18 +40,12 @@ def formfile():
 
         newfile = Resumen(id_paciente=paciente_id.id, id_profesional_obra_social=prof_obra_soc_id.id, importe_total=0, fecha=date.today())
         newfile.save()
-<<<<<<< Updated upstream
-        return render_template("admin/formpractices.html", form=form)
-=======
-        return render_template("admin/formpractices.html")
->>>>>>> Stashed changes
+        charged = 1
+        return url_for("admin.formpractices")
     return render_template('admin/formfile.html', form=form)
 
 @admin_bp.route('/formpractices', methods = ['GET','POST'])
 def formpractices():
-<<<<<<< Updated upstream
-    return render_template('admin/formpractices.html')
-=======
     form = DetailForm()
     if form.validate_on_submit():
         codigo = form.codigo.data
@@ -63,15 +57,14 @@ def formpractices():
         practica = Practica.get_id_importe(codigo)
 
         total = (int(practica.importe) * cantidad)
-        importe_cero = Resumen.get_total
+        importe_cero = Resumen.get_total()
         importe_cero.importe_total = total
 
         newdetail = DetalleRes(id_resumen=max_id, id_practica=practica.id, diente=diente, cara=cara, importe_unitario=practica.importe, cantidad=cantidad )
-        newdetail.save
-        importe_cero.importe_total.Resumen.Save
+        newdetail.save()
+        #importe_cero.importe_total.Resumen.save()
         return render_template('admin/profesional.html')
-    return render_template('admin/formparactices.html', form=form)
->>>>>>> Stashed changes
+    return render_template('admin/formpractices.html', form=form)
 
 
 

@@ -10,14 +10,27 @@
                         
                             <div>
                                 {{ form.codigo.label }}
-                                {{ form.codigo }}
+                                {{ form.codigo() }}
                             </div>
-                        </form>
                     </th>
-                    <th class=" col-md-4 text-rigt">Práctica</th>
-                    <th scope="col-md-2">Diente</th>
-                    <th scope="col-md-2">Cara</th>
-                    <th scope="col-md-2">Cantidad</th>
+                    <th scope="col-md-2">
+                            <div>
+                                {{ form.diente.label }}
+                                {{ form.diente }}
+                            </div>
+                    </th>
+                    <th scope="col-md-2">
+                        <div>
+                            {{ form.cara.label }}
+                            {{ form.cara }}
+                        </div>
+                    </th>
+                    <th scope="col-md-2">
+                        <div>
+                            {{ form.cantidad.label }}
+                            {{ form.cantidad }}
+                        </div>
+                    </th>
                 </tr>
             </thead>
         </table>
