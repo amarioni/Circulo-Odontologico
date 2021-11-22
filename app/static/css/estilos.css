@@ -92,5 +92,6 @@ body {
 }
 
 .errorbg{
-  background-color: white !important;
+  background: white!important;
+  background-size: cover !important;
 }

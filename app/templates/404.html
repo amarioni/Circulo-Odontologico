@@ -19,10 +19,11 @@
     
     <title>Oops!</title>
 </head>
-<body class="bgerror">
-    <div class="d-flex m-auto p-3">
+<body class="errorbg mt-5">
+    <div class="d-flex m-auto p-3 errorbg">
         <h1 class="col-md-6 m-auto">Parece que la página que buscabas no existe. Estamos trabajando en solucionarlo! Mientras tanto podés <a href='{{ url_for("auth.login") }}'>Volver a la página principal.</a></h1>
         <img class="col-md-5 m-auto" src="static/images/404.jpg" alt="">
     </div>
 </body>
+
 </html>

@@ -39,18 +39,14 @@ def formfile():
 
         newfile = Resumen(id_paciente=paciente_id.id, id_profesional_obra_social=prof_obra_soc_id.id, importe_total=0, fecha=date.today())
         newfile.save()
-        return render_template("admin/formfile.html", form=form)
-    return render_template('admin/formpractices.html', form=form)
+        return render_template("admin/formpractices.html", form=form)
+    return render_template('admin/formfile.html', form=form)
 
 @admin_bp.route('/formpractices')
 def formpractices():
-<<<<<<< Updated upstream
-    render_template('admin/formpractices.html')
-=======
     return render_template('admin/formpractices.html')
 
 
 
 
 
->>>>>>> Stashed changes
