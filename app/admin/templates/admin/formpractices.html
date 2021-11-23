@@ -6,23 +6,40 @@
         <table class="table table-bordered table-responsive mt-3">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col-md-1">
+                    <th scope="col-md-1  ">
                         
                             <div>
-                                {{ form.codigo.label }}
-                                {{ form.codigo }}
+                                {{ form_detalle.codigo.label(class="text-table") }}
+                                {{ form_detalle.csrf_token }}
+                                {{ form_detalle.codigo(class="form_detalle-control") }}
                             </div>
-                        </form>
                     </th>
-                    <th class=" col-md-4 text-rigt">Práctica</th>
-                    <th scope="col-md-2">Diente</th>
-                    <th scope="col-md-2">Cara</th>
-                    <th scope="col-md-2">Cantidad</th>
+                    <th class="col-md-2">
+                            <div>
+                                {{ form_detalle.diente.label(class="text-table") }}
+                                {{ form_detalle.csrf_token }}
+                                {{ form_detalle.diente(class="form_detalle-control") }}
+                            </div>
+                    </th>
+                    <th scope="col-md-2">
+                        <div>
+                            {{ form_detalle.cara.label(class="text-table") }}
+                            {{ form_detalle.csrf_token }}
+                            {{ form_detalle.cara(class="form_detalle-control") }}
+                        </div>
+                    </th>
+                    <th scope="col-md-2">
+                        <div>
+                            {{ form_detalle.cantidad.label(class="text-table") }}
+                            {{ form_detalle.csrf_token }}
+                            {{ form_detalle.cantidad(class="form_detalle-control") }}
+                        </div>
+                    </th>
                 </tr>
             </thead>
         </table>
         <div class="text-center mb-2">
-            {{ form.submit(class="btn btnlogin") }}
+            {{ form_detalle.submit(class="btn btnlogin") }}
         </div>
     </form>
 </div>

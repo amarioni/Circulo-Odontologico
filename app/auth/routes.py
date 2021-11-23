@@ -8,7 +8,7 @@ from .forms import LoginForm
 from .models import Usuario
 
 
-@auth_bp.route('/', methods=['GET', 'POST'])
+@auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         if current_user.is_admin():
