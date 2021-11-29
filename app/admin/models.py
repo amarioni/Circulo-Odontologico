@@ -1,21 +1,12 @@
-from sqlalchemy.orm import session
-from sqlalchemy.sql.expression import func
-
 from app import db
-
 
 class Resumen(db.Model):
     __tablename__ = 'resumen'
     id = db.Column(db.Integer, primary_key=True)
     id_paciente = db.Column(db.Integer, db.ForeignKey('paciente.id', ondelete='CASCADE'), nullable=False)
-    id_profesional_obra_social = db.Column(db.Integer, db.ForeignKey('profesional_obra_social.id', ondelete='CASCADE'),
-                                           nullable=False)
+    id_profesional_obra_social = db.Column(db.Integer, db.ForeignKey('profesional_obra_social.id', ondelete='CASCADE'),nullable=False)
     importe_total = db.Column(db.Integer, nullable=False)
     fecha = db.Column(db.DateTime, nullable=False)
-
-    @classmethod
-    def get_max_id(cls):
-        return session.query.filter_by(func.max(id))
                            
     @classmethod
     def get_total(cls, id):
@@ -24,28 +15,35 @@ class Resumen(db.Model):
     @classmethod
     def resumen_query(cls):
         return Resumen.query
-
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-
+    
     @classmethod
     def get(cls, resumen_id):
         return Resumen.query.filter_by(id=resumen_id).first()
 
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
 
 class DetalleRes(db.Model):
     __tablename__ = 'detalle_resumen'
     id = db.Column(db.Integer, primary_key=True)
     id_resumen = db.Column(db.Integer, db.ForeignKey('resumen.id', ondelete='CASCADE'), nullable=False)
     id_practica = db.Column(db.Integer, db.ForeignKey('practica.id', ondelete='CASCADE'), nullable=False)
-    diente = db.Column(db.Integer, nullable=False)
+    diente = db.Column(db.String(2), nullable=False)
     cara = db.Column(db.String(5), nullable=False)
     importe_unitario = db.Column(db.Integer, nullable=False)
     cantidad = db.Column(db.Integer, nullable=False)
 
+    @classmethod
+    def get_all(cls):
+        return DetalleRes.query.all()
+
     def detalleres_query(self):
         return DetalleRes.query
+        
+    @classmethod
+    def row_query(cls):
+        return db.session.query(DetalleRes).count()
 
     def save(self):
         db.session.add(self)
@@ -63,12 +61,9 @@ class Paciente(db.Model):
     n_afiliado = db.Column(db.String(20), nullable=False)
     genero = db.Column(db.Boolean, nullable=False)
 
-    # def get_id(n_afiliado):
-    # return session.query(Paciente.id).filter(Paciente.n_afiliado == n_afiliado)
-
     @classmethod
-    def get_name(cls, id):
-        return session.query(Paciente.nombre).filter(Paciente.id == id)
+    def get_total(cls, id):
+        return Paciente.query.filter_by(id=id).first()
 
     @classmethod
     def get_id(cls, n_afiliado):
@@ -108,11 +103,20 @@ class ProfObra(db.Model):
     condicion = db.Column(db.Boolean, nullable=False)
 
     @classmethod
+    def get_all(cls):
+        return ProfObra.query.all()
+
+    @classmethod
+    def row_query(cls):
+        return db.session.query(ProfObra).count()
+
+    @classmethod
     def profobra_query(cls):
         return ProfObra.query
 
-    # def get_id(id_obra_social):
-    # return session.query(ProfObra.id).filter(ProfObra.id_obra_social == id_obra_social)
+    @classmethod
+    def get_total(cls, id):
+        return ProfObra.query.filter_by(id=id).first()
 
     @classmethod
     def get_id(cls, id_obra_social):
@@ -154,8 +158,9 @@ class ObraSoc(db.Model):
     def obrasoc_query(cls):  # new
         return ObraSoc.query
 
-    # def get_id(nombre):
-    # return session.query(ObraSoc.id).filter(ObraSoc.nombre == nombre)
+    @classmethod
+    def get_total(cls, id):
+        return ObraSoc.query.filter_by(id=id).first()
 
     @classmethod
     def get_id(cls, nombre):
@@ -165,8 +170,7 @@ class ObraSoc(db.Model):
 class ObraSocPractica(db.Model):
     __tablename__ = 'obra_social_practica'
     id = db.Column(db.Integer, primary_key=True)
-    id_obra_social_plan = db.Column(db.Integer, db.ForeignKey('obra_social_plan.id', ondelete='CASCADE'),
-                                    nullable=False)
+    id_obra_social_plan = db.Column(db.Integer, db.ForeignKey('obra_social_plan.id', ondelete='CASCADE'),nullable=False)
     id_practica = db.Column(db.Integer, db.ForeignKey('practica.id', ondelete='CASCADE'), nullable=False)
 
     @classmethod

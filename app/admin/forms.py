@@ -18,7 +18,7 @@ class FileForm(FlaskForm):
 
 class DetailForm(FlaskForm):
     codigo = QuerySelectField(query_factory=Practica.practica_query, allow_blank=True, get_label='codigo')
-    diente = IntegerField('Diente')
-    cara = StringField('Cara')
+    diente = StringField('Diente', default="")
+    cara = StringField('Cara', default='')
     cantidad = IntegerField('Cantidad', validators=[DataRequired()])
     submit = SubmitField('Guardar')

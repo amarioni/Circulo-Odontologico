@@ -1,25 +1,26 @@
 {% extends "base_template.html" %}
+{% block title %}
+    Carga de Practicas
+{% endblock %}
 {% block contenido %}
-
 <div class="container-md w-80 mt-3 containericons text-center">
-    <form class="containericons p-5 m-4 needs-validation formpatient textlogin" action ="/formpractices" method="POST">
+    <form class="containericons p-5 m-4 needs-validation formpatient textlogin" action = "{{ url_for('admin.formpractices', resumen_id=resumen_id) }}" method="POST">
         <table class="table table-bordered table-responsive mt-3">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col-md-1  ">
-                        
-                            <div>
-                                {{ form_detalle.codigo.label(class="text-table") }}
-                                {{ form_detalle.csrf_token }}
-                                {{ form_detalle.codigo(class="form_detalle-control") }}
-                            </div>
+                    <th scope="col-md-1">
+                        <div>
+                            {{ form_detalle.codigo.label(class="text-table") }}
+                            {{ form_detalle.csrf_token }}
+                            {{ form_detalle.codigo(class="form_detalle-control") }}
+                        </div>
                     </th>
                     <th class="col-md-2">
-                            <div>
-                                {{ form_detalle.diente.label(class="text-table") }}
-                                {{ form_detalle.csrf_token }}
-                                {{ form_detalle.diente(class="form_detalle-control") }}
-                            </div>
+                        <div class="d-md-flex m-1">
+                            {{ form_detalle.diente.label(class="text-table") }} 
+                            {{ form_detalle.csrf_token }}
+                            {{ form_detalle.diente(class="form_detalle-control") }}
+                        </div>
                     </th>
                     <th scope="col-md-2">
                         <div>
@@ -38,6 +39,7 @@
                 </tr>
             </thead>
         </table>
+        <input type="hidden" name="resumen_id" value="{{ resumen_id }}">
         <div class="text-center mb-2">
             {{ form_detalle.submit(class="btn btnlogin") }}
         </div>

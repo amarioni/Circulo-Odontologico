@@ -5,7 +5,6 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import backref, relationship
 
 from app import db
-from app.admin.models import ProfObra
 
 
 class Profesional(db.Model):
@@ -24,6 +23,9 @@ class Profesional(db.Model):
 
     def get_id(matricula):
         return Profesional.query.get(Profesional.id).filter_bi(matricula=matricula)
+    @classmethod
+    def get_total(cls, id):
+        return Profesional.query.filter_by(id=id).first()
 
 class Persona(db.Model):
     __tablename__ = 'persona'
@@ -31,6 +33,9 @@ class Persona(db.Model):
     nombre = db.Column(db.String(50), nullable=False)
     profesional = relationship("Profesional", back_populates="persona", uselist=False)
 
+    @classmethod
+    def get_total(cls, id):
+        return Persona.query.filter_by(id=id).first()
     
 class Usuario(db.Model, UserMixin):
     __tablename__ = 'usuario'

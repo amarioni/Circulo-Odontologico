@@ -1,4 +1,7 @@
 {% extends "base_template.html" %}
+    {% block title %}
+        Manager
+    {% endblock %}
     {% block contenido %}
     
     <br>
@@ -24,7 +27,7 @@
             </div>
             <br>
             <div>
-                <button type="button" class="btn btnlogin btn-light">Consulta de Registros</button>
+                <a href='{{ url_for("admin.resumenview") }}'><button type="button" class="btn btnlogin btn-light">Consulta de Registros</button></a>
             </div>
             <br>
             <br>
