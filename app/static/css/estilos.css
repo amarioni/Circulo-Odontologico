@@ -74,6 +74,12 @@ body {
   border-style: groove;
 }
 
+.containericons2{
+  background-color: var(--circuloblue);
+  border-style: groove;
+}
+
+
 .btnlogin{
   font-family: 'Secular One';
   background-color: var(--circulogrey) !important;
